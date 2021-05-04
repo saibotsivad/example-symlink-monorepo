@@ -1,0 +1,16 @@
+{
+  "name": "monorepo",
+  "description": "Dependencies here are available for everything.",
+  "type": "module",
+  "dependencies": {
+    "mkdirp": "^0.5.5",
+    "npm-run-all": "^4.1.5",
+    "symlink-cli": "^1.0.0",
+    "uid": "^2.0.0"
+  },
+  "scripts": {
+    "setup": "run-p setup:*",
+    "setup:website": "mkdirp ./app/website/node_modules && symlink ./lib ./app/website/node_modules/@lib",
+    "setup:server": "mkdirp ./app/server/node_modules && symlink ./lib ./app/server/node_modules/@lib"
+  }
+}
