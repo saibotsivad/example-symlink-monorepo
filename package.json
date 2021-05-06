@@ -4,14 +4,22 @@
   "type": "module",
   "license": "VOL",
   "dependencies": {
+    "@rollup/plugin-commonjs": "^18.1.0",
+    "@rollup/plugin-node-resolve": "^13.0.0",
     "mkdirp": "^0.5.5",
     "npm-run-all": "^4.1.5",
+    "rimraf": "^3.0.2",
+    "rollup": "^2.47.0",
     "symlink-cli": "^1.0.0",
-    "uid": "^2.0.0"
+    "uid": "^2.0.0",
+    "webpack": "^5.36.2",
+    "webpack-cli": "^4.7.0"
   },
   "scripts": {
     "setup": "run-p setup:*",
-    "setup:website": "mkdirp ./app/website/node_modules && symlink ./lib ./app/website/node_modules/@lib",
-    "setup:server": "mkdirp ./app/server/node_modules && symlink ./lib ./app/server/node_modules/@lib"
+    "setup:demo-app": "rimraf ./app/demo-app/node_modules && mkdirp ./app/demo-app/node_modules/@ && symlink ./_shared ./app/demo-app/node_modules/@/shared && symlink ./app/demo-app/_lib ./app/demo-app/node_modules/@/lib",
+    "build": "run-p build:*",
+    "build:rollup": "rollup -c",
+    "build:webpack": "webpack --mode=development"
   }
 }
